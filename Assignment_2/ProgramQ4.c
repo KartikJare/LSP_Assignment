@@ -39,7 +39,7 @@ int main()
 
     iRet = lstat(DirName,&sobj);
 
-    printf("File type is :");
+    printf("File type is : \n");
 
     if(S_ISBLK(sobj.st_mode))
     {
