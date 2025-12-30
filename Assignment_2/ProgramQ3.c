@@ -16,7 +16,6 @@
 #include<string.h>
 #include<sys/stat.h>
 #include<dirent.h>
-#include<sys/types.h>
 
 int main()
 {
@@ -32,10 +31,6 @@ int main()
     {
         printf("%s\n",strerror(errno));
         return -1;
-    }
-    else
-    {
-        printf("Directory gets succesfully opened\n");
     }
 
     while((ptr = readdir(dp)) != NULL)
