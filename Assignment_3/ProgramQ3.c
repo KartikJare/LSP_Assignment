@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////
 //
-//  File name   : Assigment1Question3.c
+//  File name   : Assigment3Question3.c
 //  Description : Move All Files (Dir → Dir)
 //                • Accept source dir and destination dir.
 //                • Move all regular files
