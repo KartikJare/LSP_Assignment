@@ -16,21 +16,21 @@
 #include<string.h>
 #include<time.h>
 
-int main()
-{
-    char fName[60];
-    
+int main(int argc, char *argv[])
+{   
+    /*
+        char fName[100];
+
+        printf("Enter File name from stat :\n");
+        scanf(%s,fName);
+    */
+
+    int iRet = 0;
+
     struct stat sobj;
 
-    printf("Enter the file name:\n");
-    scanf("%s", fName);
+    iRet = stat(argv[1],&sobj);
 
-    if(stat(fName,&sobj) == -1)
-    {
-        printf("%s",strerror(errno));
-        return -1;
-    }
-    
     printf("Total Size : %ld\n",sobj.st_size);
     printf("Inode number : %ld\n",sobj.st_ino);
     printf("Block size : %lu\n",sobj.st_blksize);
