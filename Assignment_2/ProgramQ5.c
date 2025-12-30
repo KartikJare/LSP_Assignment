@@ -19,15 +19,17 @@
 #include<string.h>
 #include<sys/stat.h>
 #include<dirent.h>
-#include<sys/types.h>
 
 int main()
 {
     DIR *dp = NULL;
-    char DirName[100];
-    char Path[100];
     struct dirent *ptr = NULL;
     struct stat sobj;
+    char DirName[100];
+    char LargeFile[100];
+    char FileName[300];
+    int iRet = 0;
+    long int iMax = 0;
     
     printf("Enter the directory name : \n");
     scanf("%s",DirName);
@@ -38,22 +40,31 @@ int main()
         printf("%s\n",strerror(errno));
         return -1;
     }
+
+    while((ptr = readdir(dp)))
+    {
+        snprintf(FileName,sizeof(FileName),"%s/%s",DirName, ptr->d_name); //ask to sir
+        
+        iRet = stat(FileName,&sobj);
+
+        if(S_ISREG(sobj.st_mode))
+        {
+            if(sobj.st_size > iMax)
+            {
+                iMax = sobj.st_size;
+                strcpy(LargeFile, ptr->d_name);
+            }
+        }
+    }
+   
+    if(iMax == 0)
+    {
+        printf("No regular files found in directory\n");
+    }
     else
     {
-        printf("Directory gets succesfully opened\n");
-    }
-
-    while((ptr = readdir(dp)) != NULL)
-    {
-
-        snprintf(Path, sizeof(Path), "%s/%s", DirName, ptr->d_name);
-
-        if(lstat(Path, &sobj) == -1)
-        {
-            perror("lstat failed");
-            return;
-        }
-        
+        printf("Largest File Name : %s\n",LargeFile);
+        printf("Largest File Size : %ld bytes\n",iMax);
     }
 
     return 0;
