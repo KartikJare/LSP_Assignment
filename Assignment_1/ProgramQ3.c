@@ -1,3 +1,4 @@
+
 ///////////////////////////////////////////////////////////
 //
 //  File name   : Assigment1Question3.c
@@ -24,7 +25,7 @@ int main()
     printf("Enter the file name:\n");
     scanf("%s", fName);
 
-    printf("Enter the mode (read/write/execute):\n");
+    printf("Enter the mode read/write/execute:\n");
     scanf("%s", mode);
 
     if(strcmp(mode,"read") == 0)
@@ -45,8 +46,7 @@ int main()
         return -1;
     }
 
-    iRet = access(fName, flags);
-
+    iRet = access(fName,flags);
     if(iRet == 0)
     {
         printf("File is Accessible\n");
