@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////
 //
-//  File name   : Assigment4Question1.c
+//  File name   : Assigment3Question1.c
 //  Descreption : Copy File Contents (source → destination)
 //                • Accept source_file and dest_file.
 //                • Create destination if not exists (O_CREAT | O_TRUNC).
