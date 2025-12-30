@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////
 //
 //  File name   : Assigment2Question1.c
-//  Descreption : 1) Read Whole File
+//  Descreption : Read Whole File
 //                • Accept file name and print full content on console.
 //                • Use a buffer loop (read() until 0).
 //                • Show total bytes read.
@@ -20,9 +20,9 @@
 
 int main()
 {
-    char Fname[20] = {'\0'};
+    char Fname[20];
     int fd = 0, iRet = 0, iCnt = 0;
-    char Buffer[BUFFER_SIZE] = {'\0'};
+    char Buffer[BUFFER_SIZE];
 
     printf("Enter the file name that you want to open :\n");
     scanf("%s",Fname);
