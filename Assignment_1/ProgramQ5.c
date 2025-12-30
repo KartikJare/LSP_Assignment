@@ -27,23 +27,22 @@ int main()
     char *Buffer = NULL;
 
     printf("Enter the file name:\n");
-    scanf("%s", fName);
+    scanf("%s",fName);
 
     printf("Enter number of bytes to read:\n");
-    scanf("%d", &iSize);
+    scanf("%d",&iSize);
 
     fd = open(fName, O_RDONLY);
     if(fd == -1)
     {
-        printf("Error : %s\n", strerror(errno));
+        printf("%s\n", strerror(errno));
         return -1;
     }
 
-    Buffer = (char *)malloc(sizeof(char) * iSize);
+    Buffer = (char*)malloc(sizeof(char)*iSize);
     if(Buffer == NULL)
     {
         printf("Memory allocation failed\n");
-        close(fd);
         return -1;
     }
 
@@ -51,8 +50,6 @@ int main()
     if(iRet == -1)
     {
         printf("Read error : %s\n", strerror(errno));
-        free(Buffer);
-        close(fd);
         return -1;
     }
 
