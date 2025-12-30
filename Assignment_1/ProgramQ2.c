@@ -22,10 +22,10 @@ int main()
     char mode[10];
     int fd = 0,flags = 0;
 
-    printf("Enter the file name: \n");
+    printf("Enter the file name:\n");
     scanf(" %s",fName);
  
-    printf("Enter the mode R/W/RW/A : \n");
+    printf("Enter the mode R/W/RW/A :\n");
     scanf("%s",mode);
 
     if(strcmp(mode,"R") == 0)
@@ -34,15 +34,15 @@ int main()
     }
     else if(strcmp(mode,"W") == 0)
     {
-        flags = O_WRONLY | O_CREAT;
+        flags = O_WRONLY;
     }
     else if(strcmp(mode,"RW") == 0)
     {
-        flags = O_RDWR | O_CREAT;
+        flags = O_RDWR;
     }
     else if(strcmp(mode,"A") == 0)
     {
-        flags = O_APPEND | O_WRONLY | O_CREAT;
+        flags = O_APPEND | O_CREAT;
     }
     else
     {
@@ -57,7 +57,7 @@ int main()
     }
     else
     {
-        printf("File gets sucesfully open with fd : %d\n",fd);
+        printf("File gets sucesfully open with fd :%d\n",fd);
     }
 
     return 0;
