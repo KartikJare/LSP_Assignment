@@ -15,7 +15,7 @@
 #include<dirent.h>
 #include<string.h>
 #include<errno.h>
-#include<limits.h>
+#include<limits.h> //realpath
 #include<stdlib.h>    
 
 #define PATH_MAX 4096
@@ -30,26 +30,24 @@ int main()
     int iFound = 0;
 
     printf("Enter directory name : \n");
-    scanf("%s", DirName);
+    scanf("%s",DirName);
 
     printf("Enter file name to search : \n");
-    scanf("%s", FileName);
+    scanf("%s",FileName);
 
     dp = opendir(DirName);
     if(dp == NULL)
     {
-        printf("Unable to open directory : %s\n", strerror(errno));
+        printf("%s\n",strerror(errno));
         return -1;
     }
 
-    while((ptr = readdir(dp)) != NULL)
+    while((ptr = readdir(dp)))
     {
-        if(strcmp(ptr->d_name, FileName) == 0)
+        if(strcmp(ptr->d_name,FileName) == 0)
         {
-            if(realpath(DirName, AbsPath) != NULL)
+            if(realpath(DirName,AbsPath))
             {
-                strcat(AbsPath, "/");
-                strcat(AbsPath, FileName);
                 printf("File found at path : %s\n", AbsPath);
             }
             else
@@ -68,5 +66,6 @@ int main()
     }
 
     closedir(dp);
+
     return 0;
 }
