@@ -18,7 +18,7 @@
 
 int main()
 {
-    char Fname[20] = {'\0'};
+    char Fname[20];
     int fd = 0, iRet = 0;
     char Buffer[100];
 
